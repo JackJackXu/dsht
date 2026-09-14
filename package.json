@@ -1,0 +1,58 @@
+{
+  "name": "dsht",
+  "version": "0.0.0",
+  "private": true,
+  "description": "给 dsh 做的终端界面：平时是聊天，按 Esc 弹出游戏式菜单",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "tsx src/index.tsx",
+    "resume": "tsx src/index.tsx --resume",
+    "selftest": "tsx src/index.tsx --selftest",
+    "keydebug": "tsx src/index.tsx --keydebug",
+    "test": "npm run typecheck && tsx tests/source-hygiene.test.ts && tsx tests/editor.test.ts && tsx tests/keys.test.ts && tsx tests/cursor.test.ts && tsx tests/width.test.ts && tsx tests/status.test.ts && tsx tests/commands.test.ts && tsx tests/layout.test.ts && tsx tests/interactions.test.ts && tsx tests/question-flow.test.ts && tsx tests/theme.test.ts && tsx tests/markers.test.ts && tsx tests/panel-render.test.tsx && tsx tests/boxes.test.tsx && tsx tests/frame.test.tsx",
+    "palette": "tsx probe/_palette-demo.ts",
+    "palette:chart": "tsx probe/_palette-chart.ts",
+    "palette:preview": "tsx probe/_palette-preview.ts",
+    "symbols": "tsx probe/_symbols.ts",
+    "contrast": "tsx probe/_contrast.ts",
+    "markers": "tsx probe/_markers.ts",
+    "markers:write": "tsx probe/_markers.ts --write",
+    "width:check": "python probe/gen-unicode-width.py && tsx probe/_width-crosscheck.ts",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.checkjs.json",
+    "commands": "node probe/_probe-commands-list.mjs",
+    "commands:try": "node probe/_probe-commands-try.mjs",
+    "timing": "node probe/_probe-timing.mjs",
+    "preview:ui": "tsx probe/_preview-ui.tsx",
+    "projections": "node probe/_probe-projections.mjs"
+  },
+  "comment": {
+    "状态": "阶段 2 已完成（聊天/流式回复/审批/提问/计划评审/命令面板/状态行数据）。下一步：阶段 3 的 Esc 菜单。",
+    "依赖原则": "能不加就不加；加之前要说明理由。跟 dsh API 相关的包必须锁精确版本。",
+    "上游漏打包": "dsh-client-store 没声明 zustand/immer/react 依赖，必须手动装。",
+    "许可证": "MIT（见 LICENSE）"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "4.0.2",
+    "@deepseek-ai/dsh-api-gateway": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-api-remotes": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-api-session-controller": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-client-connection": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-client-file-upload": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-client-store": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-typert-registry": "0.1.5-rc.2",
+    "immer": "11.1.18",
+    "ink": "7.1.1",
+    "react": "19.3.0",
+    "react-devtools-core": "8.0.0",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^26.5.1",
+    "@types/react": "^19.3.0",
+    "tsx": "4.23.13",
+    "typescript": "^7.0.2"
+  }
+}

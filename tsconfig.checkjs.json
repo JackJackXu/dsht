@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "noUncheckedIndexedAccess": false
+  },
+  "include": ["src/**/*.mjs"],
+  "exclude": ["src/demo.mjs"]
+}

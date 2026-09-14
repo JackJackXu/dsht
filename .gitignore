@@ -1,0 +1,48 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+lib/
+*.tsbuildinfo
+
+# 日志与临时文件
+*.log
+npm-debug.log*
+.tmp/
+tmp/
+
+# 本地配置（不入库）
+.env
+.env.local
+*.local
+# 给 AI 的本地覆盖文件（docs/RESEARCH.md 里提到过这两个名字）
+AGENTS.local.md
+CLAUDE.local.md
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 生成物（可用 npm run width:check 重新生成）
+probe/.width-truth.txt
+
+# 探针会话 id（每次运行复用同一个，避免在会话列表里积垃圾）
+probe/.probe-session-id
+
+# 会话备份（确认没问题后可以删）
+.session-backup/
+
+# 会话数据 / 第三方源码 —— 公开仓库里绝不该出现
+*.zstd
+*.jsonl
+sessions/
+_refs/
+_archive/
+_session-backup/
+
+# 临时文件
+_tmp_*
