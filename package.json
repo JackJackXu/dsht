@@ -26,12 +26,14 @@
     "commands:try": "node probe/_probe-commands-try.mjs",
     "timing": "node probe/_probe-timing.mjs",
     "preview:ui": "tsx probe/_preview-ui.tsx",
-    "projections": "node probe/_probe-projections.mjs"
+    "projections": "node probe/_probe-projections.mjs",
+    "workspace": "node probe/_probe-workspace.mjs"
   },
   "comment": {
     "状态": "阶段 2 已完成（聊天/流式回复/审批/提问/计划评审/命令面板/状态行数据）。下一步：阶段 3 的 Esc 菜单。",
     "依赖原则": "能不加就不加；加之前要说明理由。跟 dsh API 相关的包必须锁精确版本。",
     "上游漏打包": "dsh-client-store 没声明 zustand/immer/react 依赖，必须手动装。",
+    "工作区依赖": "@deepseek-ai/dsh-api-workspace-controller 只有 probe/_probe-workspace.mjs 用到（src/ 不 import 它），别当成没用到的依赖删掉 —— Esc 菜单的「工作区 / 会话列表」全靠它。",
     "许可证": "MIT（见 LICENSE）"
   },
   "dependencies": {
@@ -39,6 +41,7 @@
     "@deepseek-ai/dsh-api-gateway": "0.1.5-rc.2",
     "@deepseek-ai/dsh-api-remotes": "0.1.5-rc.2",
     "@deepseek-ai/dsh-api-session-controller": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-api-workspace-controller": "0.1.5-rc.2",
     "@deepseek-ai/dsh-client-connection": "0.1.5-rc.2",
     "@deepseek-ai/dsh-client-file-upload": "0.1.5-rc.2",
     "@deepseek-ai/dsh-client-store": "0.1.5-rc.2",
